@@ -1,55 +1,65 @@
 import React from 'react';
+import memory1 from '@/assets/memory1.jpg';
+import memory2 from '@/assets/memory2.jpg';
+import memory3 from '@/assets/memory3.jpg';
+import memory4 from '@/assets/memory4.jpg';
 
 const MemoryPhotos = () => {
-  // Placeholder memory data - you can customize these
   const memories = [
     {
       id: 1,
-      title: "Best Friend Adventures 🌟",
-      description: "All our amazing times together!",
-      emoji: "🥰"
+      image: memory1,
+      caption: "Our coffee dates & endless laughs 💕",
+      title: "Best Friend Moments"
     },
     {
       id: 2,
-      title: "Laughter & Joy 😂",
-      description: "You always make me smile!",
-      emoji: "😊"
+      image: memory2,
+      caption: "Beach adventures & sunset vibes 🌅",
+      title: "Golden Memories"
     },
     {
       id: 3,
-      title: "Sweet Memories 💕",
-      description: "So grateful for our friendship!",
-      emoji: "🤗"
+      image: memory3,
+      caption: "Birthday celebrations & sweet wishes 🎂",
+      title: "Special Days"
     },
     {
       id: 4,
-      title: "Future Adventures 🌈",
-      description: "Can't wait for more memories!",
-      emoji: "✨"
+      image: memory4,
+      caption: "Shopping sprees & fun times 🛍️",
+      title: "Weekend Adventures"
     }
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto animate-fade-slide-up">
-      {memories.map((memory, index) => (
-        <div
-          key={memory.id}
-          className="bg-card/80 backdrop-blur-sm rounded-2xl p-6 shadow-soft hover:shadow-love transition-all duration-300 hover:scale-105 animate-bounce-in border border-love-light/30"
-          style={{ animationDelay: `${index * 0.2}s` }}
-        >
-          <div className="text-center space-y-3">
-            <div className="text-6xl animate-float" style={{ animationDelay: `${index * 0.5}s` }}>
-              {memory.emoji}
+    <div className="w-full flex justify-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto animate-fade-slide-up">
+        {memories.map((memory, index) => (
+          <div
+            key={memory.id}
+            className="bg-card/90 backdrop-blur-sm rounded-2xl overflow-hidden shadow-soft hover:shadow-love transition-all duration-300 hover:scale-105 animate-bounce-in border border-love-light/30"
+            style={{ animationDelay: `${index * 0.2}s` }}
+          >
+            <div className="relative">
+              <img 
+                src={memory.image} 
+                alt={memory.title}
+                className="w-full h-48 object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-love/20 to-transparent" />
             </div>
-            <h3 className="text-xl font-bold text-gradient-love font-baloo">
-              {memory.title}
-            </h3>
-            <p className="text-muted-foreground font-comic">
-              {memory.description}
-            </p>
+            <div className="p-4 text-center space-y-2">
+              <h3 className="text-lg font-bold text-gradient-love font-baloo">
+                {memory.title}
+              </h3>
+              <p className="text-muted-foreground font-comic text-sm">
+                {memory.caption}
+              </p>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };

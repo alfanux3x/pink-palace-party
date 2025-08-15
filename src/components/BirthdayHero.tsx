@@ -23,7 +23,7 @@ const BirthdayHero = () => {
   const handleNextStep = () => {
     setShowContent(false);
     setTimeout(() => {
-      setCurrentStep(prev => (prev + 1) % 5); // 5 steps total
+      setCurrentStep(prev => (prev + 1) % 6); // 6 steps total now
       setShowContent(true);
     }, 300);
   };
@@ -39,12 +39,12 @@ const BirthdayHero = () => {
     switch (currentStep) {
       case 0:
         return (
-          <div className="animate-fade-slide-up flex flex-col items-center space-y-8">
+          <div className="w-full flex flex-col items-center justify-center text-center space-y-8">
             <div className="animate-bounce-in">
               <img 
                 src={giftBoxImage} 
                 alt="Gift Box" 
-                className="w-40 h-40 md:w-56 md:h-56 cursor-pointer hover:scale-110 transition-transform duration-300 animate-float"
+                className="w-40 h-40 md:w-56 md:h-56 cursor-pointer hover:scale-110 transition-transform duration-300 animate-float mx-auto"
                 onClick={handleNextStep}
               />
             </div>
@@ -56,7 +56,7 @@ const BirthdayHero = () => {
 
       case 1:
         return (
-          <div className="animate-fade-slide-up text-center space-y-6 max-w-2xl">
+          <div className="w-full flex flex-col items-center justify-center text-center space-y-6 max-w-2xl mx-auto">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gradient-love font-baloo animate-bounce-in">
               Happy 20th Birthday, {friendName}! 🎉
             </h1>
@@ -71,78 +71,116 @@ const BirthdayHero = () => {
                 Love, {yourName} 💕
               </p>
             </div>
-            <Button 
-              variant="gift" 
-              size="xl" 
-              onClick={handleNextStep}
-              className="animate-bounce-in"
-            >
-              <Heart className="mr-2" />
-              Continue the Magic
-              <Sparkles className="ml-2" />
-            </Button>
+            <div className="flex justify-center">
+              <Button 
+                variant="gift" 
+                size="xl" 
+                onClick={handleNextStep}
+                className="animate-bounce-in"
+              >
+                <Heart className="mr-2" />
+                Continue the Magic
+                <Sparkles className="ml-2" />
+              </Button>
+            </div>
           </div>
         );
 
       case 2:
         return (
-          <div className="animate-fade-slide-up text-center space-y-8">
+          <div className="w-full flex flex-col items-center justify-center text-center space-y-8">
             <h2 className="text-3xl md:text-5xl font-bold text-gradient-love font-baloo animate-bounce-in">
               Beautiful Memories 📸
             </h2>
             <MemoryPhotos />
-            <Button 
-              variant="magical" 
-              size="xl" 
-              onClick={handleNextStep}
-              className="animate-bounce-in"
-            >
-              <Sparkles className="mr-2" />
-              Make a Wish Time!
-              <Gift className="ml-2" />
-            </Button>
+            <div className="flex justify-center">
+              <Button 
+                variant="magical" 
+                size="xl" 
+                onClick={handleNextStep}
+                className="animate-bounce-in"
+              >
+                <Sparkles className="mr-2" />
+                Make a Wish Time!
+                <Gift className="ml-2" />
+              </Button>
+            </div>
           </div>
         );
 
       case 3:
         return (
-          <div className="animate-fade-slide-up text-center space-y-8">
-            <h2 className="text-3xl md:text-5xl font-bold text-gradient-love font-baloo animate-bounce-in">
+          <div className="w-full flex flex-col items-center justify-center text-center space-y-8 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary font-baloo animate-bounce-in">
               Make a Birthday Wish! 🌟
             </h2>
-            <p className="text-xl md:text-2xl text-muted-foreground font-comic">
-              Close your eyes, make a wish, and click the magical button! ✨
+            <p className="text-lg md:text-xl text-muted-foreground font-poppins animate-fade-slide-up">
+              Close your eyes, make a wish, and click the button! ✨
             </p>
-            <Button 
-              variant="wish" 
-              size="xl" 
-              onClick={handleNextStep}
-              className="animate-bounce-in text-2xl px-12 py-6"
-            >
-              <Sparkles className="mr-3" />
-              🌟 MAKE A WISH 🌟
-              <Sparkles className="ml-3" />
-            </Button>
-            <Confetti />
-            <FloatingHearts />
+            <div className="flex justify-center">
+              <Button 
+                variant="wish" 
+                size="xl" 
+                onClick={handleNextStep}
+                className="animate-bounce-in text-lg px-8 py-4 bg-gradient-love hover:scale-105"
+              >
+                <Sparkles className="mr-2" />
+                🌟 MAKE A WISH 🌟
+                <Sparkles className="ml-2" />
+              </Button>
+            </div>
           </div>
         );
 
       case 4:
         return (
-          <div className="animate-fade-slide-up text-center space-y-8">
+          <div className="w-full flex flex-col items-center justify-center text-center space-y-8 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-gradient-love font-baloo animate-bounce-in">
+              Semoga Panjang Umur! 🎂
+            </h2>
+            <div className="space-y-4 animate-fade-slide-up">
+              <p className="text-xl md:text-2xl text-love font-comic font-bold">
+                May you live a long and happy life! 💕
+              </p>
+              <p className="text-lg md:text-xl text-muted-foreground font-poppins">
+                Wishing you health, happiness, and endless joy! 🌈
+              </p>
+              <p className="text-base md:text-lg text-accent font-comic">
+                From me with love ❤️
+              </p>
+            </div>
+            <div className="flex justify-center">
+              <Button 
+                variant="heart" 
+                size="xl" 
+                onClick={handleNextStep}
+                className="animate-bounce-in"
+              >
+                <Heart className="mr-2" />
+                Final Surprise!
+                <Sparkles className="ml-2" />
+              </Button>
+            </div>
+            <Confetti />
+            <FloatingHearts />
+          </div>
+        );
+
+      case 5:
+        return (
+          <div className="w-full flex flex-col items-center justify-center text-center space-y-8 max-w-2xl mx-auto">
             <h2 className="text-3xl md:text-5xl font-bold text-gradient-love font-baloo animate-bounce-in">
               Birthday Magic Activated! ✨
             </h2>
-            <div className="space-y-4">
-              <p className="text-xl md:text-2xl text-love font-comic font-bold animate-bounce-in">
+            <div className="space-y-4 animate-fade-slide-up">
+              <p className="text-xl md:text-2xl text-love font-comic font-bold">
                 🎂 Happy Birthday Beautiful! 🎂
               </p>
               <p className="text-lg md:text-xl text-muted-foreground font-poppins">
                 May all your dreams come true this year! 🌈
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div className="flex justify-center">
               <Button 
                 variant="heart" 
                 size="xl" 
@@ -188,16 +226,18 @@ const BirthdayHero = () => {
         </Button>
       </div>
 
-      {/* Main Content */}
+      {/* Main Content - Always centered */}
       <div className="flex items-center justify-center min-h-screen px-4 py-8">
-        <div className="w-full max-w-4xl mx-auto">
-          {renderStep()}
+        <div className="w-full max-w-4xl mx-auto flex justify-center">
+          <div className="w-full flex justify-center">
+            {renderStep()}
+          </div>
         </div>
       </div>
 
       {/* Step Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
-        {[0, 1, 2, 3, 4].map((step) => (
+        {[0, 1, 2, 3, 4, 5].map((step) => (
           <div
             key={step}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
