@@ -2,41 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* Beautiful Birthday Design System - Pink & Girly Theme 
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Pink Paradise Color Palette */
+    --background: 350 100% 97%;  /* Soft pink white */
+    --foreground: 330 15% 25%;   /* Dark pink-gray text */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 355 100% 98%;
+    --card-foreground: 330 15% 25%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 355 100% 98%;
+    --popover-foreground: 330 15% 25%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary: Beautiful hot pink */
+    --primary: 340 82% 52%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 340 82% 65%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary: Soft blush pink */
+    --secondary: 350 60% 85%;
+    --secondary-foreground: 330 15% 25%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted: Light pink tones */
+    --muted: 350 40% 90%;
+    --muted-foreground: 330 20% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent: Vibrant magenta */
+    --accent: 320 70% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Love colors */
+    --love: 350 100% 70%;        /* Bright pink */
+    --love-light: 350 100% 85%;  /* Light pink */
+    --love-dark: 340 82% 45%;    /* Deep pink */
+
+    /* Special gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(340 82% 52%) 0%, hsl(320 70% 60%) 100%);
+    --gradient-soft: linear-gradient(135deg, hsl(350 100% 97%) 0%, hsl(350 60% 85%) 100%);
+    --gradient-love: linear-gradient(45deg, hsl(350 100% 70%) 0%, hsl(340 82% 52%) 50%, hsl(320 70% 60%) 100%);
+    --gradient-sparkle: radial-gradient(circle at 50% 50%, hsl(350 100% 85%) 0%, hsl(340 82% 65%) 70%, hsl(320 70% 60%) 100%);
+
+    /* Magical shadows */
+    --shadow-love: 0 10px 30px -5px hsl(340 82% 52% / 0.3);
+    --shadow-glow: 0 0 40px hsl(350 100% 70% / 0.4);
+    --shadow-soft: 0 4px 20px hsl(350 60% 85% / 0.5);
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 350 40% 88%;
+    --input: 350 40% 90%;
+    --ring: 340 82% 52%;
 
-    --radius: 0.5rem;
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +122,74 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-baloo;
+    background: var(--gradient-soft);
+    min-height: 100vh;
+    overflow-x: hidden;
   }
+}
+
+/* Custom font families */
+@layer utilities {
+  .font-baloo { font-family: 'Baloo 2', cursive; }
+  .font-comic { font-family: 'Comic Neue', cursive; }
+  .font-poppins { font-family: 'Poppins', sans-serif; }
+}
+
+/* Birthday Animation Keyframes */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(1deg); }
+  66% { transform: translateY(5px) rotate(-1deg); }
+}
+
+@keyframes bounce-in {
+  0% { transform: scale(0) rotate(0deg); opacity: 0; }
+  50% { transform: scale(1.1) rotate(180deg); opacity: 0.8; }
+  100% { transform: scale(1) rotate(360deg); opacity: 1; }
+}
+
+@keyframes fade-slide-up {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heart-float {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1) rotate(180deg); }
+}
+
+@keyframes confetti-fall {
+  0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+/* Animation Classes */
+@layer components {
+  .animate-float { animation: float 3s ease-in-out infinite; }
+  .animate-bounce-in { animation: bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+  .animate-fade-slide-up { animation: fade-slide-up 0.8s ease-out; }
+  .animate-heart-float { animation: heart-float 4s linear infinite; }
+  .animate-sparkle { animation: sparkle 2s ease-in-out infinite; }
+  .animate-confetti { animation: confetti-fall 3s linear infinite; }
+  
+  .text-gradient-love {
+    background: var(--gradient-love);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .bg-gradient-love { background: var(--gradient-love); }
+  .bg-gradient-soft { background: var(--gradient-soft); }
+  .bg-gradient-sparkle { background: var(--gradient-sparkle); }
+  
+  .shadow-love { box-shadow: var(--shadow-love); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
 }
